@@ -1,0 +1,11 @@
+{
+ "discount":0.8 ,
+  "<1":0,
+  "1<=time<8":5,
+  "8<=time<24":10,
+  "allday":10,
+  "permonth":200,
+  "forever":200000,
+  "monthfee":50
+
+}
