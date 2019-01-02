@@ -10,33 +10,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ParkDaoImpl implements ParkDao {
     JDBCUtils utils = new JDBCUtils();
 
-    @Override
-    public boolean addParkInformation(Object parkObject) {
-        Connection conn = utils.getConnection();
-        PreparedStatement pst = null;
-        String sql = "";
-        if (parkObject instanceof Temppark) {
-            //sql="UPDATE temppark SET CardNo=?,UsedTime=?,Fee=?,StartTime=?,EndTime=?,UserName=?,PhoneNum=? WHERE idTempPark=?";
-        } else if (parkObject instanceof Rentpark) {
-
-        } else if (parkObject instanceof Rentpark) {
-
-        } else {
-            return false;
-        }
-        try {
-            pst = conn.prepareStatement(sql);
-            pst.executeUpdate();
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
 
     @Override
     public Object getParkById(String idPark) throws SQLException {
@@ -136,5 +114,47 @@ public class ParkDaoImpl implements ParkDao {
         }
         utils.close(rst,pst,conn);
         return false;
+    }
+
+    @Override
+    public ArrayList<String> getEmptyTempPark() {
+        Connection conn=utils.getConnection();
+        PreparedStatement pst=null;
+        ResultSet rst=null;
+        ArrayList<String> array=new ArrayList<>();
+        String sql="SELECT idTempPark FROM temppark WHERE CardNo=?";
+        try {
+            pst=conn.prepareStatement(sql);
+            pst.setString(1,"");
+            rst=pst.executeQuery();
+            while (rst.next()){
+                array.add(rst.getString("idTempPark"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        utils.close(rst,pst,conn);
+        return array.size()==0?null:array;
+    }
+
+    @Override
+    public ArrayList<String> getEmptyRentPark() {
+        Connection conn=utils.getConnection();
+        PreparedStatement pst=null;
+        ResultSet rst=null;
+        ArrayList<String> array=new ArrayList<>();
+        String sql="SELECT idRentPark FROM rentpark WHERE CardNo=?";
+        try {
+            pst=conn.prepareStatement(sql);
+            pst.setString(1,"");
+            rst=pst.executeQuery();
+            while (rst.next()){
+                array.add(rst.getString("idRentPark"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        utils.close(rst,pst,conn);
+        return array.size()==0?null:array;
     }
 }
