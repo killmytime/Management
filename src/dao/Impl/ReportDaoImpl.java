@@ -162,6 +162,7 @@ public class ReportDaoImpl implements ReportDao {
             pst.setString(7,equipmentreport.getDetails());
             pst.setString(8,equipmentreport.getUserName());
             pst.setInt(9,equipmentreport.getPhoneNum());
+            
             pst.executeUpdate();
             utils.close(null,pst,conn);
             return true;
