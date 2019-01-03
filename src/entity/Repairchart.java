@@ -12,6 +12,7 @@ public class Repairchart {
     private String idRepairChart;
     private String equipNo;
     private String equipName;
+    private String description;
     private String reason;
     private Double fee;
     private Timestamp repairTime;
@@ -44,6 +45,16 @@ public class Repairchart {
 
     public void setEquipName(String equipName) {
         this.equipName = equipName;
+    }
+
+    @Basic
+    @Column(name = "Description")
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Basic
@@ -84,6 +95,7 @@ public class Repairchart {
         return Objects.equals(idRepairChart, that.idRepairChart) &&
                 Objects.equals(equipNo, that.equipNo) &&
                 Objects.equals(equipName, that.equipName) &&
+                Objects.equals(description, that.description) &&
                 Objects.equals(reason, that.reason) &&
                 Objects.equals(fee, that.fee) &&
                 Objects.equals(repairTime, that.repairTime);
@@ -92,6 +104,6 @@ public class Repairchart {
     @Override
     public int hashCode() {
 
-        return Objects.hash(idRepairChart, equipNo, equipName, reason, fee, repairTime);
+        return Objects.hash(idRepairChart, equipNo, equipName, description, reason, fee, repairTime);
     }
 }

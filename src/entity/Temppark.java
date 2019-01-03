@@ -76,7 +76,6 @@ public class Temppark {
         this.endTime = endTime;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -87,7 +86,7 @@ public class Temppark {
                 Objects.equals(usedTime, temppark.usedTime) &&
                 Objects.equals(fee, temppark.fee) &&
                 Objects.equals(startTime, temppark.startTime) &&
-                Objects.equals(endTime, temppark.endTime) ;
+                Objects.equals(endTime, temppark.endTime);
     }
 
     @Override

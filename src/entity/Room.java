@@ -1,14 +1,11 @@
 package entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@IdClass(RoomPK.class)
 public class Room {
-    private String idRoom;
     private String buildingNo;
     private String roomNo;
     private Integer checkIn;
@@ -19,16 +16,6 @@ public class Room {
     private String identify;
 
     @Id
-    @Column(name = "idRoom")
-    public String getIdRoom() {
-        return idRoom;
-    }
-
-    public void setIdRoom(String idRoom) {
-        this.idRoom = idRoom;
-    }
-
-    @Basic
     @Column(name = "BuildingNo")
     public String getBuildingNo() {
         return buildingNo;
@@ -38,7 +25,7 @@ public class Room {
         this.buildingNo = buildingNo;
     }
 
-    @Basic
+    @Id
     @Column(name = "RoomNo")
     public String getRoomNo() {
         return roomNo;
@@ -113,8 +100,7 @@ public class Room {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Room room = (Room) o;
-        return Objects.equals(idRoom, room.idRoom) &&
-                Objects.equals(buildingNo, room.buildingNo) &&
+        return Objects.equals(buildingNo, room.buildingNo) &&
                 Objects.equals(roomNo, room.roomNo) &&
                 Objects.equals(checkIn, room.checkIn) &&
                 Objects.equals(fee, room.fee) &&
@@ -127,6 +113,6 @@ public class Room {
     @Override
     public int hashCode() {
 
-        return Objects.hash(idRoom, buildingNo, roomNo, checkIn, fee, information, userName, phomeNum, identify);
+        return Objects.hash(buildingNo, roomNo, checkIn, fee, information, userName, phomeNum, identify);
     }
 }

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public interface RoomDao {
     public boolean register(Room room);
     public ArrayList<Room> getEmptyRooms();
-    public ArrayList<Room> getRoomByID(String idRoom);//可能还需要根据用户名字，用户身份查询，多个房子，同名的情况
-    public ArrayList<Object> getallTasks(Room room,String taskType,String processingType);//taskType控制查询任务的类型,processingType处理状态
+    public ArrayList<Room> getRoomByID(int phoneNum);//可能还需要根据用户名字，用户身份查询，多个房子，同名的情况
+    public ArrayList<Object> getAllTasks(int phoneNum,String taskType,String processingType);//taskType控制查询任务的类型,processingType处理状态
 
 }

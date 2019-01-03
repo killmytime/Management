@@ -12,7 +12,7 @@ public class Moneycontrol {
     private String idMoneyControl;
     private Double income;
     private Double outcome;
-    private Time day;
+    private Time recordTime;
 
     @Id
     @Column(name = "idMoneyControl")
@@ -45,13 +45,13 @@ public class Moneycontrol {
     }
 
     @Basic
-    @Column(name = "Day")
-    public Time getDay() {
-        return day;
+    @Column(name = "recordTime")
+    public Time getRecordTime() {
+        return recordTime;
     }
 
-    public void setDay(Time day) {
-        this.day = day;
+    public void setRecordTime(Time recordTime) {
+        this.recordTime = recordTime;
     }
 
     @Override
@@ -62,12 +62,12 @@ public class Moneycontrol {
         return Objects.equals(idMoneyControl, that.idMoneyControl) &&
                 Objects.equals(income, that.income) &&
                 Objects.equals(outcome, that.outcome) &&
-                Objects.equals(day, that.day);
+                Objects.equals(recordTime, that.recordTime);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(idMoneyControl, income, outcome, day);
+        return Objects.hash(idMoneyControl, income, outcome, recordTime);
     }
 }
